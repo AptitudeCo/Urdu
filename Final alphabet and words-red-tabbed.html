@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Urdu Alphabet — Red Letters (Tabbed)</title>
+<style>
+  /* === Tab bar (pure CSS, no JavaScript) === */
+  .tab-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+  .tab-bar {
+    display: flex;
+    border-bottom: 2px solid #D4C9B8;
+    margin: 0;
+    padding: 16px 16px 0;
+    background: #FAF7F2;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .tab {
+    padding: 10px 24px;
+    cursor: pointer;
+    border: 1px solid #D4C9B8;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    background: #E8DFCC;
+    font-size: 14px;
+    color: #666;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    position: relative;
+    user-select: none;
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  .tab:hover { background: #F2EAD8; color: #1A1A1A; }
+  #tab-naskh:checked    ~ .tab-bar label[for="tab-naskh"],
+  #tab-nastaliq:checked ~ .tab-bar label[for="tab-nastaliq"],
+  #tab-alphabet:checked ~ .tab-bar label[for="tab-alphabet"],
+  #tab-alphabet-naskh:checked ~ .tab-bar label[for="tab-alphabet-naskh"] {
+    background: #FAF7F2;
+    font-weight: 600;
+    z-index: 1;
+  }
+  #tab-naskh:checked    ~ .tab-bar label[for="tab-naskh"]    { color: #1E40AF; }
+  #tab-nastaliq:checked ~ .tab-bar label[for="tab-nastaliq"] { color: #8B4513; }
+  #tab-alphabet:checked ~ .tab-bar label[for="tab-alphabet"] { color: #047857; }
+  #tab-alphabet-naskh:checked ~ .tab-bar label[for="tab-alphabet-naskh"] { color: #6B21A8; }
+
+  /* === Show/hide iframes === */
+  .frame { display: none; width: 100%; height: calc(100vh - 60px); border: 0; background: #FAF7F2; }
+  #tab-naskh:checked    ~ .frame-naskh    { display: block; }
+  #tab-nastaliq:checked ~ .frame-nastaliq { display: block; }
+  #tab-alphabet:checked ~ .frame-alphabet { display: block; }
+  #tab-alphabet-naskh:checked ~ .frame-alphabet-naskh { display: block; }
+</style>
+</head>
+<body style="margin: 0; padding: 0; background: #FAF7F2;">
+
+<!-- Tab radio inputs (hidden, drive the pure-CSS tab switch) -->
+<input type="radio" name="urdu-view" id="tab-naskh"    class="tab-input" checked>
+<input type="radio" name="urdu-view" id="tab-nastaliq" class="tab-input">
+<input type="radio" name="urdu-view" id="tab-alphabet" class="tab-input">
+<input type="radio" name="urdu-view" id="tab-alphabet-naskh" class="tab-input">
+
+<nav class="tab-bar" role="tablist" aria-label="View">
+  <label for="tab-naskh"    class="tab" role="tab" title="Show 37 letters in 3 positions, each with a Naskh-font example word">Words — Naskh</label>
+  <label for="tab-nastaliq" class="tab" role="tab" title="Same as Naskh tab but in Nastaliq font">Words — Nastaliq</label>
+  <label for="tab-alphabet" class="tab" role="tab" title="All 41 base letters with isolated/initial/medial/final forms">Alphabet — 41 forms (Nastaliq)</label>
+  <label for="tab-alphabet-naskh" class="tab" role="tab" title="Same alphabet table but in Naskh font">Alphabet — 41 forms (Naskh)</label>
+</nav>
+
+<!-- TAB 1: Naskh — full original words-red.html loaded in iframe, untouched -->
+<iframe class="frame frame-naskh" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ur&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Urdu Alphabet — 37 Letters in Three Positions&lt;/title&gt;
+&lt;style&gt;
+  @font-face {
+    font-family: &quot;Noto Nastaliq Urdu&quot;;
+    src: 
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  :root {
+    --bg: #FAF7F2;
+    --fg: #1A1A1A;
+    --muted: #666;
+    --accent: #8B4513;
+    --accent2: #1E40AF;
+    --accent3: #047857;
+    --highlight: #B91C1C;
+    --highlight-bg: #FEE2E2;
+    --rule: #D4C9B8;
+    --zebra: #F4EFE6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 24px;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .urdu-title {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 48px;
+    line-height: 1.8;
+    color: var(--accent);
+    text-align: center;
+    margin: 16px 0 8px;
+    direction: rtl;
+  }
+
+  section { margin-bottom: 48px; }
+
+  section h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--accent);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 16px;
+  }
+
+  section h2 .urdu {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 28px;
+    font-weight: normal;
+    margin-left: 12px;
+    color: var(--accent);
+  }
+
+  section h2 .count {
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--muted);
+    margin-left: 12px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--rule);
+    font-size: 14px;
+  }
+
+  thead th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  thead th.col-urdu { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 17px; }
+
+  tbody td {
+    padding: 8px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody td.num { color: var(--muted); font-variant-numeric: tabular-nums; width: 40px; }
+  tbody td.letter {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 22px;
+    color: var(--highlight);
+    font-weight: bold;
+    width: 50px;
+  }
+  tbody td.word {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 30px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  /* The target letter inside each word is wrapped in a &lt;span class=&quot;hl&quot;&gt;
+     and rendered in red (no background, no underline). */
+  tbody td.word .hl {
+    color: var(--highlight);
+    font-weight: inherit;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+  tbody td.translit { font-style: italic; color: var(--fg); width: 140px; }
+  tbody td.meaning { text-align: left; padding-left: 12px; color: var(--fg); }
+  tbody td.none { color: var(--muted); font-size: 13px; font-style: italic; }
+
+  tbody tr:nth-child(even) { background: var(--zebra); }
+
+  /* Position-specific accent colors */
+  section.initial h2 { color: var(--accent2); border-bottom-color: var(--accent2); }
+  section.initial thead th { background: var(--accent2); }
+  section.initial td.letter { color: var(--accent2); background: #DBEAFE; }
+
+  section.medial h2 { color: var(--accent3); border-bottom-color: var(--accent3); }
+  section.medial thead th { background: var(--accent3); }
+  section.medial td.letter { color: var(--accent3); background: #D1FAE5; }
+
+  /* For medial/final the target letter IS the whole word body, but we still
+     color the target position red inside the word. */
+
+  footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 0 0 20px;
+    font-size: 13px;
+  }
+  .legend span {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+  .legend .l-initial { background: #DBEAFE; color: var(--accent2); }
+  .legend .l-medial  { background: #D1FAE5; color: var(--accent3); }
+  .legend .l-highlight { background: transparent; color: var(--highlight); }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .wrap { max-width: none; }
+    thead th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tbody tr, td.letter { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Urdu Alphabet — 37 Letters in Three Positions&lt;/h1&gt;
+    &lt;div class=&quot;subtitle&quot;&gt;Each letter shown at the start, middle, and end of a 3–5 letter word&lt;/div&gt;
+    &lt;div class=&quot;urdu-title&quot;&gt;اُردو حُروف کے ساتھ الفاظ&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;legend&quot;&gt;
+    &lt;span class=&quot;l-initial&quot;&gt;Initial position (blue)&lt;/span&gt;
+    &lt;span class=&quot;l-medial&quot;&gt;Medial position (green)&lt;/span&gt;
+    &lt;span class=&quot;l-highlight&quot;&gt;Target letter in red&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;!-- =========================================================== --&gt;
+  &lt;!-- INITIAL --&gt;
+  &lt;!-- =========================================================== --&gt;
+  &lt;section class=&quot;initial&quot;&gt;
+    &lt;h2&gt;Initial Position &lt;span class=&quot;urdu&quot;&gt;شروع میں&lt;/span&gt; &lt;span class=&quot;count&quot;&gt;(letter at the start of the word)&lt;/span&gt;&lt;/h2&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Letter&lt;/th&gt;
+          &lt;th class=&quot;col-urdu&quot;&gt;لفظ&lt;/th&gt;
+          &lt;th&gt;Translit.&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ا&lt;/span&gt;سم&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ism&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;name&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ب&lt;/span&gt;ات&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;bāt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;talk / matter&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;پ&lt;/span&gt;انی&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pānī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;water&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ت&lt;/span&gt;ین&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;tīn&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;three&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ٹ&lt;/span&gt;ھیک&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ṭhīk&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;correct / okay&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ث&lt;/span&gt;مر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;samar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;fruit&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ج&lt;/span&gt;سم&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;jism&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;body&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;چ&lt;/span&gt;اہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;chāh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;want / desire&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ح&lt;/span&gt;رف&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;harf&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;letter (of alphabet)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;خ&lt;/span&gt;وب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khūb&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;good / very&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;د&lt;/span&gt;ور&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dūr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;far / distant&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ڈ&lt;/span&gt;ال&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ḍāl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;lentil (dish)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ذ&lt;/span&gt;وق&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;zauq&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;taste / appreciation&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ر&lt;/span&gt;ات&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;rāt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;night&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ڑ very rarely appears word-initially in Urdu&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ز&lt;/span&gt;بان&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;zabān&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;language / tongue&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ژ&lt;/span&gt;ال&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;zhāl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;hail (poetic)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;س&lt;/span&gt;ات&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sāt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;seven&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ش&lt;/span&gt;ام&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;shām&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;evening&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ص&lt;/span&gt;بح&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;subaḥ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;morning&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ض&lt;/span&gt;بط&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ẓabṭ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;control / discipline&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ط&lt;/span&gt;الب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ṭālib&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;student / seeker&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ظ&lt;/span&gt;لم&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ẓulm&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;oppression&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ع&lt;/span&gt;مل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;&#x27;amal&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;action / deed&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;غ&lt;/span&gt;لط&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghalat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;wrong / incorrect&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ف&lt;/span&gt;صل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fasal&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;harvest / season&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ق&lt;/span&gt;بل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;qabl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;before&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ک&lt;/span&gt;تاب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kitāb&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;book&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;گ&lt;/span&gt;ھر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;house&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ل&lt;/span&gt;فظ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;lafẓ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;word&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;م&lt;/span&gt;کان&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;makān&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;place / house&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ن&lt;/span&gt;ام&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;nām&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;name&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;و&lt;/span&gt;قت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;waqt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;time&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ہ&lt;/span&gt;اتھ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;hāth&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;hand&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ھ marks aspiration of the preceding consonant — does not appear word-initially in native Urdu&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ی&lt;/span&gt;اد&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;yād&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;memory&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;bari ye is final-only — does not start words&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/section&gt;
+
+  &lt;!-- =========================================================== --&gt;
+  &lt;!-- MEDIAL --&gt;
+  &lt;!-- =========================================================== --&gt;
+  &lt;section class=&quot;medial&quot;&gt;
+    &lt;h2&gt;Medial Position &lt;span class=&quot;urdu&quot;&gt;درمیان میں&lt;/span&gt; &lt;span class=&quot;count&quot;&gt;(letter in the middle of the word)&lt;/span&gt;&lt;/h2&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Letter&lt;/th&gt;
+          &lt;th class=&quot;col-urdu&quot;&gt;لفظ&lt;/th&gt;
+          &lt;th&gt;Translit.&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ا&lt;/span&gt;ں&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;māṅ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;mother&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;ب&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khabar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;news / information&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;پ&lt;/span&gt;ڑا&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kapṛā&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;cloth&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ت&lt;/span&gt;حد&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;muttaḥid&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;united&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;ٹ&lt;/span&gt;ھ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kaṭh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;wood&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ا&lt;span class=&quot;hl&quot;&gt;ث&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;asar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;effect / impact&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ف&lt;span class=&quot;hl&quot;&gt;ج&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fajr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;dawn&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;چ&lt;/span&gt;ھ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kuchh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;some&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ح&lt;/span&gt;بت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;muhabbat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;love&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;خ&lt;/span&gt;تلف&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mukhtalif&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;various&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ص&lt;span class=&quot;hl&quot;&gt;د&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sadr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;chief / boss&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ہ&lt;span class=&quot;hl&quot;&gt;ڈ&lt;/span&gt;ی&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;haḍī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;bone&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ذ&lt;/span&gt;ہب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mazhab&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;religion&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;گ&lt;span class=&quot;hl&quot;&gt;ر&lt;/span&gt;می&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;garmī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;warmth&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;س&lt;span class=&quot;hl&quot;&gt;ڑ&lt;/span&gt;ک&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sarak&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;road&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ع&lt;span class=&quot;hl&quot;&gt;ز&lt;/span&gt;یمت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;azmat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;grandeur&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ژ rarely appears in medial position&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;د&lt;span class=&quot;hl&quot;&gt;س&lt;/span&gt;ت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dast&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;hand&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;د&lt;span class=&quot;hl&quot;&gt;ش&lt;/span&gt;من&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dushman&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;enemy&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ح&lt;span class=&quot;hl&quot;&gt;ص&lt;/span&gt;ہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ḥissa&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;share / part&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ف&lt;span class=&quot;hl&quot;&gt;ض&lt;/span&gt;ل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fazl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;grace / favor&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;ط&lt;/span&gt;ہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khitta&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;region&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ن&lt;span class=&quot;hl&quot;&gt;ظ&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;nazar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;sight / view&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ش&lt;span class=&quot;hl&quot;&gt;ع&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;shi&#x27;r&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;poetry&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ب&lt;span class=&quot;hl&quot;&gt;غ&lt;/span&gt;یر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;baghair&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;without&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ف&lt;/span&gt;ید&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mufīd&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;useful&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ف&lt;span class=&quot;hl&quot;&gt;ق&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;faqr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;poverty&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ش&lt;span class=&quot;hl&quot;&gt;ک&lt;/span&gt;ل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;shakl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;shape&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ل&lt;span class=&quot;hl&quot;&gt;گ&lt;/span&gt;نا&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;lagna&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;to attach&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;ل&lt;/span&gt;مہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kalma&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;creed / formula&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;رح&lt;span class=&quot;hl&quot;&gt;م&lt;/span&gt;ت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;reḥmat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;mercy&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;د&lt;span class=&quot;hl&quot;&gt;ن&lt;/span&gt;یا&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dunyā&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;world&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;و&lt;/span&gt;اب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khwāb&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;sleep&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;پ&lt;span class=&quot;hl&quot;&gt;ہ&lt;/span&gt;لے&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pahle&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;first / before&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;گ&lt;span class=&quot;hl&quot;&gt;ھ&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;house&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;پ&lt;span class=&quot;hl&quot;&gt;ی&lt;/span&gt;ار&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pyār&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;love&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ے is final-only — does not appear in medial position&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/section&gt;
+
+  &lt;!-- =========================================================== --&gt;
+  &lt;!-- FINAL --&gt;
+  &lt;!-- =========================================================== --&gt;
+  &lt;section class=&quot;final&quot;&gt;
+    &lt;h2&gt;Final Position &lt;span class=&quot;urdu&quot;&gt;آخر میں&lt;/span&gt; &lt;span class=&quot;count&quot;&gt;(letter at the end of the word)&lt;/span&gt;&lt;/h2&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Letter&lt;/th&gt;
+          &lt;th class=&quot;col-urdu&quot;&gt;لفظ&lt;/th&gt;
+          &lt;th&gt;Translit.&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ہو&lt;span class=&quot;hl&quot;&gt;ا&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;hawā&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;air / became&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;حس&lt;span class=&quot;hl&quot;&gt;ب&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ḥasab&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;according to&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;با&lt;span class=&quot;hl&quot;&gt;پ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;bāp&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;father&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;وق&lt;span class=&quot;hl&quot;&gt;ت&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;waqt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;time&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;گھ&lt;span class=&quot;hl&quot;&gt;ٹ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghaṭ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;less / fewer&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;بح&lt;span class=&quot;hl&quot;&gt;ث&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;baḥs&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;discussion&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;در&lt;span class=&quot;hl&quot;&gt;ج&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;darj&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;grade / insert&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;چ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kach&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;raw&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;فت&lt;span class=&quot;hl&quot;&gt;ح&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fatḥ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;victory&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;تاری&lt;span class=&quot;hl&quot;&gt;خ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;tārīkh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;history&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;سر&lt;span class=&quot;hl&quot;&gt;د&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sard&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;cold&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ہ&lt;span class=&quot;hl&quot;&gt;ڈ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;haḍ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;bone&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ذ very rarely appears at the end of native Urdu words&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;قم&lt;span class=&quot;hl&quot;&gt;ر&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;qamar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;moon&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;پک&lt;span class=&quot;hl&quot;&gt;ڑ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pakaṛ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;to catch&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;نما&lt;span class=&quot;hl&quot;&gt;ز&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;namāz&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;prayer&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ژ rarely appears at end of words&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;در&lt;span class=&quot;hl&quot;&gt;س&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dars&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;lesson&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خامو&lt;span class=&quot;hl&quot;&gt;ش&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khāmosh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;silent&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خا&lt;span class=&quot;hl&quot;&gt;ص&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khās&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;special&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;عر&lt;span class=&quot;hl&quot;&gt;ض&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;arz&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;request / submit&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;ط&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khaṭ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;line / letter&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;لف&lt;span class=&quot;hl&quot;&gt;ظ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;lafẓ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;word&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;من&lt;span class=&quot;hl&quot;&gt;ع&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mana&#x27;&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;prohibition&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;درو&lt;span class=&quot;hl&quot;&gt;غ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;darogh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;lie&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;هد&lt;span class=&quot;hl&quot;&gt;ف&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;hadaf&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;goal&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;عش&lt;span class=&quot;hl&quot;&gt;ق&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ishq&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;love&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;مل&lt;span class=&quot;hl&quot;&gt;ک&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mulk&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;country&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;رن&lt;span class=&quot;hl&quot;&gt;گ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;rang&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;color&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;عد&lt;span class=&quot;hl&quot;&gt;ل&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;adal&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;justice&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;قل&lt;span class=&quot;hl&quot;&gt;م&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;qalam&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;pen&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;بد&lt;span class=&quot;hl&quot;&gt;ن&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;badan&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;body&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;دی&lt;span class=&quot;hl&quot;&gt;و&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dev&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;giant&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;را&lt;span class=&quot;hl&quot;&gt;ہ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;rāh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;road / path&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;دیک&lt;span class=&quot;hl&quot;&gt;ھ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;daikh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;look (verb)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;کوئ&lt;span class=&quot;hl&quot;&gt;ی&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;koī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;someone&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;کرت&lt;span class=&quot;hl&quot;&gt;ے&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;karte&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;they do&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/section&gt;
+
+  &lt;footer&gt;
+    37 base letters × 3 positions = 111 words (some letters have no word in one or two positions).
+    The target letter is highlighted in red inside each word. Target letters in the &quot;Letter&quot; column
+    are also highlighted — blue for initial section, green for medial section, red for final section.
+  &lt;/footer&gt;
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+
+<!-- TAB 2: Nastaliq — full original words-red - Nashtaliq.html loaded in iframe, untouched -->
+<iframe class="frame frame-nastaliq" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ur&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Urdu Alphabet — 37 Letters in Three Positions&lt;/title&gt;
+&lt;style&gt;
+  @font-face {
+    font-family: &quot;Noto Nastaliq Urdu&quot;;
+		src: url(&quot;NotoNastaliqUrdu-Regular.ttf&quot;) format(&quot;truetype&quot;);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  :root {
+    --bg: #FAF7F2;
+    --fg: #1A1A1A;
+    --muted: #666;
+    --accent: #8B4513;
+    --accent2: #1E40AF;
+    --accent3: #047857;
+    --highlight: #B91C1C;
+    --highlight-bg: #FEE2E2;
+    --rule: #D4C9B8;
+    --zebra: #F4EFE6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 24px;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .urdu-title {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 48px;
+    line-height: 1.8;
+    color: var(--accent);
+    text-align: center;
+    margin: 16px 0 8px;
+    direction: rtl;
+  }
+
+  section { margin-bottom: 48px; }
+
+  section h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--accent);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 16px;
+  }
+
+  section h2 .urdu {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 28px;
+    font-weight: normal;
+    margin-left: 12px;
+    color: var(--accent);
+  }
+
+  section h2 .count {
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--muted);
+    margin-left: 12px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--rule);
+    font-size: 14px;
+  }
+
+  thead th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  thead th.col-urdu { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 17px; }
+
+  tbody td {
+    padding: 8px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody td.num { color: var(--muted); font-variant-numeric: tabular-nums; width: 40px; }
+  tbody td.letter {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 22px;
+    color: var(--highlight);
+    font-weight: bold;
+    width: 50px;
+  }
+  tbody td.word {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 30px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  /* The target letter inside each word is wrapped in a &lt;span class=&quot;hl&quot;&gt;
+     and rendered in red (no background, no underline). */
+  tbody td.word .hl {
+    color: var(--highlight);
+    font-weight: inherit;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+  tbody td.translit { font-style: italic; color: var(--fg); width: 140px; }
+  tbody td.meaning { text-align: left; padding-left: 12px; color: var(--fg); }
+  tbody td.none { color: var(--muted); font-size: 13px; font-style: italic; }
+
+  tbody tr:nth-child(even) { background: var(--zebra); }
+
+  /* Position-specific accent colors */
+  section.initial h2 { color: var(--accent2); border-bottom-color: var(--accent2); }
+  section.initial thead th { background: var(--accent2); }
+  section.initial td.letter { color: var(--accent2); background: #DBEAFE; }
+
+  section.medial h2 { color: var(--accent3); border-bottom-color: var(--accent3); }
+  section.medial thead th { background: var(--accent3); }
+  section.medial td.letter { color: var(--accent3); background: #D1FAE5; }
+
+  /* For medial/final the target letter IS the whole word body, but we still
+     color the target position red inside the word. */
+
+  footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 0 0 20px;
+    font-size: 13px;
+  }
+  .legend span {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+  .legend .l-initial { background: #DBEAFE; color: var(--accent2); }
+  .legend .l-medial  { background: #D1FAE5; color: var(--accent3); }
+  .legend .l-highlight { background: transparent; color: var(--highlight); }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .wrap { max-width: none; }
+    thead th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tbody tr, td.letter { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Urdu Alphabet — 37 Letters in Three Positions&lt;/h1&gt;
+    &lt;div class=&quot;subtitle&quot;&gt;Each letter shown at the start, middle, and end of a 3–5 letter word&lt;/div&gt;
+    &lt;div class=&quot;urdu-title&quot;&gt;اُردو حُروف کے ساتھ الفاظ&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;legend&quot;&gt;
+    &lt;span class=&quot;l-initial&quot;&gt;Initial position (blue)&lt;/span&gt;
+    &lt;span class=&quot;l-medial&quot;&gt;Medial position (green)&lt;/span&gt;
+    &lt;span class=&quot;l-highlight&quot;&gt;Target letter in red&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;!-- =========================================================== --&gt;
+  &lt;!-- INITIAL --&gt;
+  &lt;!-- =========================================================== --&gt;
+  &lt;section class=&quot;initial&quot;&gt;
+    &lt;h2&gt;Initial Position &lt;span class=&quot;urdu&quot;&gt;شروع میں&lt;/span&gt; &lt;span class=&quot;count&quot;&gt;(letter at the start of the word)&lt;/span&gt;&lt;/h2&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Letter&lt;/th&gt;
+          &lt;th class=&quot;col-urdu&quot;&gt;لفظ&lt;/th&gt;
+          &lt;th&gt;Translit.&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ا&lt;/span&gt;سم&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ism&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;name&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ب&lt;/span&gt;ات&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;bāt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;talk / matter&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;پ&lt;/span&gt;انی&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pānī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;water&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ت&lt;/span&gt;ین&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;tīn&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;three&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ٹ&lt;/span&gt;ھیک&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ṭhīk&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;correct / okay&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ث&lt;/span&gt;مر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;samar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;fruit&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ج&lt;/span&gt;سم&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;jism&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;body&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;چ&lt;/span&gt;اہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;chāh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;want / desire&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ح&lt;/span&gt;رف&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;harf&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;letter (of alphabet)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;خ&lt;/span&gt;وب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khūb&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;good / very&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;د&lt;/span&gt;ور&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dūr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;far / distant&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ڈ&lt;/span&gt;ال&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ḍāl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;lentil (dish)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ذ&lt;/span&gt;وق&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;zauq&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;taste / appreciation&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ر&lt;/span&gt;ات&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;rāt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;night&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ڑ very rarely appears word-initially in Urdu&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ز&lt;/span&gt;بان&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;zabān&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;language / tongue&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ژ&lt;/span&gt;ال&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;zhāl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;hail (poetic)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;س&lt;/span&gt;ات&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sāt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;seven&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ش&lt;/span&gt;ام&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;shām&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;evening&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ص&lt;/span&gt;بح&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;subaḥ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;morning&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ض&lt;/span&gt;بط&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ẓabṭ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;control / discipline&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ط&lt;/span&gt;الب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ṭālib&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;student / seeker&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ظ&lt;/span&gt;لم&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ẓulm&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;oppression&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ع&lt;/span&gt;مل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;&#x27;amal&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;action / deed&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;غ&lt;/span&gt;لط&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghalat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;wrong / incorrect&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ف&lt;/span&gt;صل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fasal&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;harvest / season&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ق&lt;/span&gt;بل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;qabl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;before&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ک&lt;/span&gt;تاب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kitāb&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;book&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;گ&lt;/span&gt;ھر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;house&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ل&lt;/span&gt;فظ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;lafẓ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;word&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;م&lt;/span&gt;کان&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;makān&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;place / house&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ن&lt;/span&gt;ام&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;nām&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;name&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;و&lt;/span&gt;قت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;waqt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;time&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ہ&lt;/span&gt;اتھ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;hāth&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;hand&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ھ marks aspiration of the preceding consonant — does not appear word-initially in native Urdu&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;&lt;span class=&quot;hl&quot;&gt;ی&lt;/span&gt;اد&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;yād&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;memory&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;bari ye is final-only — does not start words&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/section&gt;
+
+  &lt;!-- =========================================================== --&gt;
+  &lt;!-- MEDIAL --&gt;
+  &lt;!-- =========================================================== --&gt;
+  &lt;section class=&quot;medial&quot;&gt;
+    &lt;h2&gt;Medial Position &lt;span class=&quot;urdu&quot;&gt;درمیان میں&lt;/span&gt; &lt;span class=&quot;count&quot;&gt;(letter in the middle of the word)&lt;/span&gt;&lt;/h2&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Letter&lt;/th&gt;
+          &lt;th class=&quot;col-urdu&quot;&gt;لفظ&lt;/th&gt;
+          &lt;th&gt;Translit.&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ا&lt;/span&gt;ں&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;māṅ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;mother&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;ب&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khabar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;news / information&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;پ&lt;/span&gt;ڑا&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kapṛā&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;cloth&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ت&lt;/span&gt;حد&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;muttaḥid&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;united&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;ٹ&lt;/span&gt;ھ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kaṭh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;wood&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ا&lt;span class=&quot;hl&quot;&gt;ث&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;asar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;effect / impact&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ف&lt;span class=&quot;hl&quot;&gt;ج&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fajr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;dawn&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;چ&lt;/span&gt;ھ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kuchh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;some&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ح&lt;/span&gt;بت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;muhabbat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;love&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;خ&lt;/span&gt;تلف&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mukhtalif&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;various&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ص&lt;span class=&quot;hl&quot;&gt;د&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sadr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;chief / boss&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ہ&lt;span class=&quot;hl&quot;&gt;ڈ&lt;/span&gt;ی&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;haḍī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;bone&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ذ&lt;/span&gt;ہب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mazhab&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;religion&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;گ&lt;span class=&quot;hl&quot;&gt;ر&lt;/span&gt;می&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;garmī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;warmth&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;س&lt;span class=&quot;hl&quot;&gt;ڑ&lt;/span&gt;ک&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sarak&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;road&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ع&lt;span class=&quot;hl&quot;&gt;ز&lt;/span&gt;یمت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;azmat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;grandeur&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ژ rarely appears in medial position&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;د&lt;span class=&quot;hl&quot;&gt;س&lt;/span&gt;ت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dast&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;hand&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;د&lt;span class=&quot;hl&quot;&gt;ش&lt;/span&gt;من&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dushman&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;enemy&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ح&lt;span class=&quot;hl&quot;&gt;ص&lt;/span&gt;ہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ḥissa&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;share / part&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ف&lt;span class=&quot;hl&quot;&gt;ض&lt;/span&gt;ل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fazl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;grace / favor&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;ط&lt;/span&gt;ہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khitta&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;region&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ن&lt;span class=&quot;hl&quot;&gt;ظ&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;nazar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;sight / view&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ش&lt;span class=&quot;hl&quot;&gt;ع&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;shi&#x27;r&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;poetry&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ب&lt;span class=&quot;hl&quot;&gt;غ&lt;/span&gt;یر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;baghair&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;without&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;م&lt;span class=&quot;hl&quot;&gt;ف&lt;/span&gt;ید&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mufīd&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;useful&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ف&lt;span class=&quot;hl&quot;&gt;ق&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;faqr&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;poverty&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ش&lt;span class=&quot;hl&quot;&gt;ک&lt;/span&gt;ل&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;shakl&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;shape&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ل&lt;span class=&quot;hl&quot;&gt;گ&lt;/span&gt;نا&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;lagna&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;to attach&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;ل&lt;/span&gt;مہ&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kalma&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;creed / formula&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;رح&lt;span class=&quot;hl&quot;&gt;م&lt;/span&gt;ت&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;reḥmat&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;mercy&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;د&lt;span class=&quot;hl&quot;&gt;ن&lt;/span&gt;یا&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dunyā&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;world&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;و&lt;/span&gt;اب&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khwāb&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;sleep&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;پ&lt;span class=&quot;hl&quot;&gt;ہ&lt;/span&gt;لے&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pahle&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;first / before&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;گ&lt;span class=&quot;hl&quot;&gt;ھ&lt;/span&gt;ر&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;house&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;پ&lt;span class=&quot;hl&quot;&gt;ی&lt;/span&gt;ار&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pyār&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;love&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ے is final-only — does not appear in medial position&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/section&gt;
+
+  &lt;!-- =========================================================== --&gt;
+  &lt;!-- FINAL --&gt;
+  &lt;!-- =========================================================== --&gt;
+  &lt;section class=&quot;final&quot;&gt;
+    &lt;h2&gt;Final Position &lt;span class=&quot;urdu&quot;&gt;آخر میں&lt;/span&gt; &lt;span class=&quot;count&quot;&gt;(letter at the end of the word)&lt;/span&gt;&lt;/h2&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Letter&lt;/th&gt;
+          &lt;th class=&quot;col-urdu&quot;&gt;لفظ&lt;/th&gt;
+          &lt;th&gt;Translit.&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ہو&lt;span class=&quot;hl&quot;&gt;ا&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;hawā&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;air / became&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;حس&lt;span class=&quot;hl&quot;&gt;ب&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ḥasab&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;according to&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;با&lt;span class=&quot;hl&quot;&gt;پ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;bāp&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;father&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;وق&lt;span class=&quot;hl&quot;&gt;ت&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;waqt&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;time&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;گھ&lt;span class=&quot;hl&quot;&gt;ٹ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ghaṭ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;less / fewer&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;بح&lt;span class=&quot;hl&quot;&gt;ث&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;baḥs&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;discussion&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;در&lt;span class=&quot;hl&quot;&gt;ج&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;darj&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;grade / insert&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ک&lt;span class=&quot;hl&quot;&gt;چ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;kach&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;raw&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;فت&lt;span class=&quot;hl&quot;&gt;ح&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;fatḥ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;victory&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;تاری&lt;span class=&quot;hl&quot;&gt;خ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;tārīkh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;history&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;سر&lt;span class=&quot;hl&quot;&gt;د&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;sard&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;cold&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;ہ&lt;span class=&quot;hl&quot;&gt;ڈ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;haḍ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;bone&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ذ very rarely appears at the end of native Urdu words&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;قم&lt;span class=&quot;hl&quot;&gt;ر&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;qamar&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;moon&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;پک&lt;span class=&quot;hl&quot;&gt;ڑ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;pakaṛ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;to catch&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;نما&lt;span class=&quot;hl&quot;&gt;ز&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;namāz&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;prayer&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;none&quot; colspan=&quot;4&quot;&gt;ژ rarely appears at end of words&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;در&lt;span class=&quot;hl&quot;&gt;س&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dars&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;lesson&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خامو&lt;span class=&quot;hl&quot;&gt;ش&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khāmosh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;silent&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خا&lt;span class=&quot;hl&quot;&gt;ص&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khās&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;special&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;عر&lt;span class=&quot;hl&quot;&gt;ض&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;arz&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;request / submit&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;خ&lt;span class=&quot;hl&quot;&gt;ط&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;khaṭ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;line / letter&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;لف&lt;span class=&quot;hl&quot;&gt;ظ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;lafẓ&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;word&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;من&lt;span class=&quot;hl&quot;&gt;ع&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mana&#x27;&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;prohibition&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;درو&lt;span class=&quot;hl&quot;&gt;غ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;darogh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;lie&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;هد&lt;span class=&quot;hl&quot;&gt;ف&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;hadaf&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;goal&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;عش&lt;span class=&quot;hl&quot;&gt;ق&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;ishq&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;love&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;مل&lt;span class=&quot;hl&quot;&gt;ک&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;mulk&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;country&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;رن&lt;span class=&quot;hl&quot;&gt;گ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;rang&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;color&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;عد&lt;span class=&quot;hl&quot;&gt;ل&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;adal&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;justice&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;قل&lt;span class=&quot;hl&quot;&gt;م&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;qalam&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;pen&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;بد&lt;span class=&quot;hl&quot;&gt;ن&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;badan&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;body&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;دی&lt;span class=&quot;hl&quot;&gt;و&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;dev&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;giant&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;را&lt;span class=&quot;hl&quot;&gt;ہ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;rāh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;road / path&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;دیک&lt;span class=&quot;hl&quot;&gt;ھ&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;daikh&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;look (verb)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;کوئ&lt;span class=&quot;hl&quot;&gt;ی&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;koī&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;someone&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;word&quot;&gt;کرت&lt;span class=&quot;hl&quot;&gt;ے&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;translit&quot;&gt;karte&lt;/td&gt;&lt;td class=&quot;meaning&quot;&gt;they do&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/section&gt;
+
+  &lt;footer&gt;
+    37 base letters × 3 positions = 111 words (some letters have no word in one or two positions).
+    The target letter is highlighted in red inside each word. Target letters in the &quot;Letter&quot; column
+    are also highlighted — blue for initial section, green for medial section, red for final section.
+  &lt;/footer&gt;
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+
+<!-- TAB 3: Alphabet (Nastaliq) — full original alphabet.html loaded in iframe, untouched -->
+<iframe class="frame frame-alphabet" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ur&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Urdu Alphabet — 41 Forms&lt;/title&gt;
+&lt;style&gt;
+  @font-face {
+    font-family: &quot;Noto Nastaliq Urdu&quot;;
+    src: url(&quot;NotoNastaliqUrdu-Regular.ttf&quot;) format(&quot;truetype&quot;);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  :root {
+    --bg: #FAF7F2;
+    --fg: #1A1A1A;
+    --muted: #666;
+    --accent: #8B4513;
+    --rule: #D4C9B8;
+    --zebra: #F4EFE6;
+    --non: #FBE9E7;
+    --con: #E8F5E9;
+    --fin: #FFF8E1;
+    --end: #F3E5F5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 24px;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .urdu-title {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 72px;
+    line-height: 1.8;
+    color: var(--accent);
+    text-align: center;
+    margin: 16px 0 8px;
+    direction: rtl;
+  }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .legend span {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+
+  .legend .l-non  { background: var(--non); }
+  .legend .l-con  { background: var(--con); }
+  .legend .l-fin  { background: var(--fin); }
+  .legend .l-end  { background: var(--end); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--rule);
+    font-size: 14px;
+  }
+
+  thead th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  thead th.urdu-col { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 27px; }
+
+  tbody td {
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody td.num { color: var(--muted); font-variant-numeric: tabular-nums; width: 36px; }
+  tbody td.name { text-align: left; padding-left: 12px; font-weight: 500; }
+  tbody td.letter { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 39px; line-height: 1.2; }
+  tbody td.form  { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 39px; line-height: 1.2; }
+  tbody td.none  { color: var(--muted); font-size: 22px; }
+
+  /* Initial and Medial columns: 30% larger than Isolated/Final */
+  tbody tr &gt; td:nth-child(5),
+  tbody tr &gt; td:nth-child(6) {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 51px;
+    line-height: 1.2;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  tbody tr:nth-child(even) { background: var(--zebra); }
+  tbody tr.row-non { background: var(--non) !important; }
+  tbody tr.row-con { background: var(--con) !important; }
+  tbody tr.row-fin { background: var(--fin) !important; }
+  tbody tr.row-end { background: var(--end) !important; }
+
+  tbody tr.row-non:nth-child(even) { background: #F5D5D2 !important; }
+  tbody tr.row-con:nth-child(even) { background: #D7EBD8 !important; }
+  tbody tr.row-fin:nth-child(even) { background: #FFF0CC !important; }
+  tbody tr.row-end:nth-child(even) { background: #E8D5EC !important; }
+
+  .typ {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .hamza-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .wrap { max-width: none; }
+    thead th { background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tbody tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Urdu Alphabet — 41 Letters with Positional Forms&lt;/h1&gt;
+    &lt;div class=&quot;subtitle&quot;&gt;Isolated · Initial · Medial · Final — rendered in Noto Nastaliq Urdu&lt;/div&gt;
+    &lt;div class=&quot;urdu-title&quot;&gt;اُردو حُروفِ تہَجّی&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;legend&quot;&gt;
+    &lt;span class=&quot;l-non&quot;&gt;Non-connector (9)&lt;/span&gt;
+    &lt;span class=&quot;l-con&quot;&gt;Connector (27)&lt;/span&gt;
+    &lt;span class=&quot;l-fin&quot;&gt;Final-only (1)&lt;/span&gt;
+    &lt;span class=&quot;l-end&quot;&gt;End-only / carrier (4)&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;p style=&quot;margin: 0 0 16px; font-size: 12px; color: var(--muted); text-align: center;&quot;&gt;
+    Non-connectors can&#x27;t actually appear in medial position — they break the cursive join chain, so the
+    next letter starts a new join unit. The medial column is blank for them. The &quot;final&quot; column shows
+    the letter with the joining tooth from the previous connector, which is how a non-connector actually
+    looks when it ends a join unit in real text (e.g., the د in &lt;span style=&quot;font-family:&#x27;Noto Nastaliq Urdu&#x27;,serif;font-size:14px;direction:rtl;display:inline-block&quot;&gt;كتب&lt;/span&gt;).
+  &lt;/p&gt;
+
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;#&lt;/th&gt;
+        &lt;th&gt;Letter&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;ایزولیٹڈ&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Isolated&lt;/span&gt;&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;ابتدائی&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Initial&lt;/span&gt;&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;درمیانی&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Medial&lt;/span&gt;&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;اخیری&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Final&lt;/span&gt;&lt;/th&gt;
+        &lt;th&gt;Type&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;alif&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـا&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;be&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;بـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـبـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـب&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;pe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;پـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـپـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـپ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;te&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;تـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـتـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـت&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ṭe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ٹـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـٹـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـٹ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;se&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ثـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـثـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـث&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;jeem&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;جـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـجـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـج&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;che&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;چـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـچـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـچ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;bari he&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;حـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـحـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـح&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;khe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;خـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـخـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـخ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;daal&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـد&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ḍaal&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـڈ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zaal&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـذ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;re&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـر&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ṛe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـڑ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ze&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـز&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zhe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـژ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;seen&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;سـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـسـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـس&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;sheen&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;شـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـشـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـش&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;suaad&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;صـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـصـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـص&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zuaad&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ضـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـضـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـض&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;toe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;طـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـطـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـط&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zoe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ظـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـظـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـظ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ayn&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;عـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـعـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـع&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ghayn&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;غـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـغـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـغ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;fe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;فـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـفـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـف&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;qaaf&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;قـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـقـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـق&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;kaaf&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;کـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـکـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـک&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;gaaf&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;گـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـگـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـگ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;laam&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;لـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـلـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـل&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;meem&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;مـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـمـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـم&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;noon&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;نـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـنـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـن&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;wao&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـو&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;chhoti he&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ہـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـہـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـہ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;do-chashmi he&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـھـ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Medial-only&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;chhoti ye&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;یـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـیـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـی&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-fin&quot;&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;bari ye&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـیـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـے&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Final / Medial&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-end&quot;&gt;&lt;td class=&quot;num&quot;&gt;38&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ء&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;hamza&lt;div class=&quot;hamza-note&quot;&gt;carrier-based&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ء&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;أ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ء&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـئ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Carrier&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;39&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;آ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;alif madda&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;آ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;آ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-end&quot;&gt;&lt;td class=&quot;num&quot;&gt;40&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ں&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;noon ghunna&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ں&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;End-only&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-end&quot;&gt;&lt;td class=&quot;num&quot;&gt;41&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ة&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;tāʼ marbūṭah&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ة&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ﮨ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;End-only&lt;/td&gt;&lt;/tr&gt;
+
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;footer&gt;
+    41-letter inventory (37 base + Hamza + Alif Madda + Noon Ghunna + Tāʼ marbūṭah).&lt;br&gt;
+    Open in any modern browser.
+  &lt;/footer&gt;
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+
+<!-- TAB 4: Alphabet (Naskh) — full original alphabet Naskh - Copy.html loaded in iframe, untouched -->
+<iframe class="frame frame-alphabet-naskh" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ur&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Urdu Alphabet — 41 Forms&lt;/title&gt;
+&lt;style&gt;
+  @font-face {
+    font-family: &quot;Noto Nastaliq Urdu&quot;;
+    src: 
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  :root {
+    --bg: #FAF7F2;
+    --fg: #1A1A1A;
+    --muted: #666;
+    --accent: #8B4513;
+    --rule: #D4C9B8;
+    --zebra: #F4EFE6;
+    --non: #FBE9E7;
+    --con: #E8F5E9;
+    --fin: #FFF8E1;
+    --end: #F3E5F5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 24px;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .urdu-title {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 72px;
+    line-height: 1.8;
+    color: var(--accent);
+    text-align: center;
+    margin: 16px 0 8px;
+    direction: rtl;
+  }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .legend span {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+
+  .legend .l-non  { background: var(--non); }
+  .legend .l-con  { background: var(--con); }
+  .legend .l-fin  { background: var(--fin); }
+  .legend .l-end  { background: var(--end); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--rule);
+    font-size: 14px;
+  }
+
+  thead th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  thead th.urdu-col { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 27px; }
+
+  tbody td {
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody td.num { color: var(--muted); font-variant-numeric: tabular-nums; width: 36px; }
+  tbody td.name { text-align: left; padding-left: 12px; font-weight: 500; }
+  tbody td.letter { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 39px; line-height: 1.2; }
+  tbody td.form  { font-family: &quot;Noto Nastaliq Urdu&quot;, serif; font-size: 39px; line-height: 1.2; }
+  tbody td.none  { color: var(--muted); font-size: 22px; }
+
+  /* Initial and Medial columns: 30% larger than Isolated/Final */
+  tbody tr &gt; td:nth-child(5),
+  tbody tr &gt; td:nth-child(6) {
+    font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+    font-size: 51px;
+    line-height: 1.2;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  tbody tr:nth-child(even) { background: var(--zebra); }
+  tbody tr.row-non { background: var(--non) !important; }
+  tbody tr.row-con { background: var(--con) !important; }
+  tbody tr.row-fin { background: var(--fin) !important; }
+  tbody tr.row-end { background: var(--end) !important; }
+
+  tbody tr.row-non:nth-child(even) { background: #F5D5D2 !important; }
+  tbody tr.row-con:nth-child(even) { background: #D7EBD8 !important; }
+  tbody tr.row-fin:nth-child(even) { background: #FFF0CC !important; }
+  tbody tr.row-end:nth-child(even) { background: #E8D5EC !important; }
+
+  .typ {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .hamza-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .wrap { max-width: none; }
+    thead th { background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tbody tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Urdu Alphabet — 41 Letters with Positional Forms&lt;/h1&gt;
+    &lt;div class=&quot;subtitle&quot;&gt;Isolated · Initial · Medial · Final — rendered in Noto Nastaliq Urdu&lt;/div&gt;
+    &lt;div class=&quot;urdu-title&quot;&gt;اُردو حُروفِ تہَجّی&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;legend&quot;&gt;
+    &lt;span class=&quot;l-non&quot;&gt;Non-connector (9)&lt;/span&gt;
+    &lt;span class=&quot;l-con&quot;&gt;Connector (27)&lt;/span&gt;
+    &lt;span class=&quot;l-fin&quot;&gt;Final-only (1)&lt;/span&gt;
+    &lt;span class=&quot;l-end&quot;&gt;End-only / carrier (4)&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;p style=&quot;margin: 0 0 16px; font-size: 12px; color: var(--muted); text-align: center;&quot;&gt;
+    Non-connectors can&#x27;t actually appear in medial position — they break the cursive join chain, so the
+    next letter starts a new join unit. The medial column is blank for them. The &quot;final&quot; column shows
+    the letter with the joining tooth from the previous connector, which is how a non-connector actually
+    looks when it ends a join unit in real text (e.g., the د in &lt;span style=&quot;font-family:&#x27;Noto Nastaliq Urdu&#x27;,serif;font-size:14px;direction:rtl;display:inline-block&quot;&gt;كتب&lt;/span&gt;).
+  &lt;/p&gt;
+
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;#&lt;/th&gt;
+        &lt;th&gt;Letter&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;ایزولیٹڈ&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Isolated&lt;/span&gt;&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;ابتدائی&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Initial&lt;/span&gt;&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;درمیانی&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Medial&lt;/span&gt;&lt;/th&gt;
+        &lt;th class=&quot;urdu-col&quot;&gt;اخیری&lt;br&gt;&lt;span style=&quot;font-size:11px;font-weight:400;font-family:inherit&quot;&gt;Final&lt;/span&gt;&lt;/th&gt;
+        &lt;th&gt;Type&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;alif&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ا&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـا&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;2&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;be&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ب&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;بـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـبـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـب&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;3&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;pe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;پ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;پـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـپـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـپ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;4&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;te&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ت&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;تـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـتـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـت&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;5&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ṭe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ٹ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ٹـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـٹـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـٹ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;6&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;se&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ث&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ثـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـثـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـث&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;7&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;jeem&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ج&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;جـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـجـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـج&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;8&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;che&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;چ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;چـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـچـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـچ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;9&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;bari he&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ح&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;حـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـحـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـح&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;10&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;khe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;خ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;خـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـخـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـخ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;11&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;daal&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;د&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـد&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ḍaal&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ڈ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـڈ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;13&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zaal&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ذ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـذ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;14&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;re&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ر&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـر&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;15&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ṛe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ڑ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـڑ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;16&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ze&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ز&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـز&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;17&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zhe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ژ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـژ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;18&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;seen&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;س&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;سـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـسـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـس&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;19&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;sheen&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ش&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;شـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـشـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـش&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;20&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;suaad&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ص&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;صـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـصـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـص&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;21&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zuaad&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ض&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ضـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـضـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـض&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;22&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;toe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ط&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;طـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـطـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـط&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;23&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;zoe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ظ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ظـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـظـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـظ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;24&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ayn&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ع&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;عـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـعـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـع&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;25&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;ghayn&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;غ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;غـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـغـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـغ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;26&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;fe&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ف&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;فـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـفـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـف&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;27&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;qaaf&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ق&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;قـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـقـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـق&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;28&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;kaaf&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ک&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;کـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـکـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـک&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;29&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;gaaf&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;گ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;گـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـگـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـگ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;30&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;laam&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ل&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;لـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـلـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـل&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;meem&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;م&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;مـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـمـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـم&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;32&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;noon&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ن&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;نـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـنـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـن&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;33&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;wao&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;و&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـو&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;34&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;chhoti he&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ہ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ہـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـہـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـہ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;35&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;do-chashmi he&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ھ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـھـ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Medial-only&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-con&quot;&gt;&lt;td class=&quot;num&quot;&gt;36&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;chhoti ye&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ی&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;یـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـیـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـی&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Connector&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-fin&quot;&gt;&lt;td class=&quot;num&quot;&gt;37&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;bari ye&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ے&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـیـ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـے&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Final / Medial&lt;/td&gt;&lt;/tr&gt;
+
+      &lt;tr class=&quot;row-end&quot;&gt;&lt;td class=&quot;num&quot;&gt;38&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ء&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;hamza&lt;div class=&quot;hamza-note&quot;&gt;carrier-based&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ء&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;أ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ء&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ـئ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Carrier&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-non&quot;&gt;&lt;td class=&quot;num&quot;&gt;39&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;آ&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;alif madda&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;آ&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;آ&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;Non-connector&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-end&quot;&gt;&lt;td class=&quot;num&quot;&gt;40&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ں&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;noon ghunna&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ں&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;End-only&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;row-end&quot;&gt;&lt;td class=&quot;num&quot;&gt;41&lt;/td&gt;&lt;td class=&quot;letter&quot;&gt;ة&lt;/td&gt;&lt;td class=&quot;name&quot;&gt;tāʼ marbūṭah&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ة&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;none&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;form&quot;&gt;ﮨ&lt;/td&gt;&lt;td class=&quot;typ&quot;&gt;End-only&lt;/td&gt;&lt;/tr&gt;
+
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;footer&gt;
+    41-letter inventory (37 base + Hamza + Alif Madda + Noon Ghunna + Tāʼ marbūṭah).&lt;br&gt;
+    Open in any modern browser.
+  &lt;/footer&gt;
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+
+</body>
+</html>
