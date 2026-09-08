@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generative Urdu Skills — Manim Demo</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2333; --line:#2a3441;
+    --txt:#e6edf3; --muted:#9aa4b2; --accent:#e3b341; --accent2:#58a6ff;
+    --green:#3fb950; --red:#f85149;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--txt);line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 24px 80px}
+  header{text-align:center;padding:34px 0 10px}
+  .kicker{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:600}
+  h1{font-size:2.2rem;margin:.4rem 0 .2rem;font-weight:800}
+  .sub{color:var(--muted);max-width:720px;margin:10px auto 0;font-size:1.02rem}
+  .meta{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:22px 0 8px;font-size:.92rem;color:var(--muted)}
+  .meta b{color:var(--txt)}
+  .pill{background:var(--panel2);border:1px solid var(--line);border-radius:999px;
+    padding:5px 14px;font-size:.82rem;color:var(--muted)}
+  .pill b{color:var(--accent)}
+  h2{font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);
+    margin:52px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h2 .n{color:var(--muted);font-weight:600;margin-right:8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column}
+  .card video{width:100%;aspect-ratio:16/9;display:block;background:#000;object-fit:cover}
+  .card-body{padding:14px 16px 16px}
+  .card-body h3{margin:0 0 4px;font-size:1rem;font-weight:700}
+  .tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.04em;
+    text-transform:uppercase;padding:2px 8px;border-radius:5px;margin-bottom:8px}
+  .tag.infra{color:#d2a8ff;background:rgba(168,85,247,.14)}
+  .tag.content{color:#7ee787;background:rgba(63,185,80,.14)}
+  .tag.audio{color:#79c0ff;background:rgba(88,166,255,.14)}
+  .desc{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+  .src{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.72rem;
+    color:var(--muted);background:var(--panel2);border-radius:6px;padding:7px 10px;display:block;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .grid.rows{grid-template-columns:1fr;gap:12px}
+  .row{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:start;background:var(--panel);
+    border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .row .name{font-weight:700;font-size:.98rem}
+  .row .name span{display:block;font-size:.72rem;font-weight:600;color:var(--muted);margin-top:2px}
+  .row .about{color:var(--muted);font-size:.88rem}
+  .row .about em{color:var(--txt);font-style:normal;font-weight:600}
+  .note{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:8px;padding:14px 18px;font-size:.9rem;color:var(--muted);margin-top:16px}
+  .note b{color:var(--txt)}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:60px;padding-top:20px;
+    border-top:1px solid var(--line)}
+  a{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Generative Urdu Learning Content</div>
+    <h1>Manim Urdu Skill Suite</h1>
+    <p class="sub">A self-contained library of generative skills that produce
+      ready-to-play Urdu teaching videos and cards from a simple data spec —
+      real, working outputs, not mockups.</p>
+    <div class="meta">
+      <span class="pill"><b>16</b>&nbsp;generative skills</span>
+      <span class="pill"><b>15</b>&nbsp;live video demos</span>
+      <span class="pill">Manim CE <b>v0.20.1</b></span>
+      <span class="pill">1920×1080 / 1280×720</span>
+      <span class="pill">Urdu + Roman + English</span>
+    </div>
+  </header>
+
+  <h2><span class="n">01</span>Rendering infrastructure — solved Urdu in Manim</h2>
+  <p style="color:var(--muted);max-width:760px;margin-top:-6px">
+    These skills fix the hard problems of rendering Arabic-script Urdu in
+    Manim — zero-width shaping, missing isolated glyphs, per-letter
+    highlighting, font fallbacks, and layout verification. Everything that
+    follows depends on them working.</p>
+  <div class="grid">
+    <div class="card">
+      <video controls preload="metadata" poster="media/alphabet-card.jpg">
+        <source src="media/alphabet-card.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag infra">Alphabet card</span>
+        <h3>Full Urdu alphabet</h3>
+        <p class="desc">The complete 39-letter Urdu alphabet rendered on one card with correct Nastaliq shaping.</p>
+        <span class="src">manim-video</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/bilingual-prototype.mp4">
+        <source src="media/bilingual-prototype.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag infra">Bilingual sentence</span>
+        <h3>Urdu + Roman + English line</h3>
+        <p class="desc">Prototype template: an Urdu sentence with transliteration and English gloss composed correctly.</p>
+        <span class="src">manim-video</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/mixed-scripts.mp4">
+        <source src="media/mixed-scripts.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag infra">Mixed scripts</span>
+        <h3>RTL + LTR mixed layout</h3>
+        <p class="desc">Right-to-left Urdu and left-to-right Latin on the same line, with correct spacing and no font leakage.</p>
+        <span class="src">manim-video</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/flashcard-shell.mp4">
+        <source src="media/flashcard-shell.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag infra">Flashcard shell</span>
+        <h3>Reusable vocabulary card</h3>
+        <p class="desc">Image + isolated letters + joined highlighted word + transliteration — a drop-in card factory.</p>
+        <span class="src">manim-urdu-flashcard-shell</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/layout-grid.mp4">
+        <source src="media/layout-grid.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag infra">Layout grid</span>
+        <h3>Measurement grid overlay</h3>
+        <p class="desc">Superimpose a coordinate grid over any scene to verify element alignment in Manim units.</p>
+        <span class="src">manim-layout-grid</span>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="n">02</span>Generative content builders — spec → full video</h2>
+  <p style="color:var(--muted);max-width:760px;margin-top:-6px">
+    Each of these reads a simple data file (TSV) and renders a complete,
+    playable deck or single card. Add a row, get another card — the layout,
+    highlights, and transitions are handled automatically.</p>
+  <div class="grid">
+    <div class="card">
+      <video controls preload="metadata" poster="media/possessive-deck.mp4">
+        <source src="media/possessive-deck.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">24-card possessive deck</span>
+        <h3>Possessive pronouns</h3>
+        <p class="desc">A full lesson deck: possessor base in green, inflection ending in red, with Roman + English gloss.</p>
+        <span class="src">translit-and-urdu-script-dual-highlight</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/possessive-card.mp4">
+        <source src="media/possessive-card.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Single card anim</span>
+        <h3>One possessive card</h3>
+        <p class="desc">A single animated example — "This is my house" — with the base/ending highlight revealed in sequence.</p>
+        <span class="src">translit-and-urdu-script-dual-highlight</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/present-tense-deck.mp4">
+        <source src="media/present-tense-deck.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Agreement-pair deck</span>
+        <h3>Present tense deck</h3>
+        <p class="desc">Verb suffix + helper verb light up together as a red agreement pair, per example.</p>
+        <span class="src">urdu-agreement-pair-deck</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/past-tense-card.mp4">
+        <source src="media/past-tense-card.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Grammar card</span>
+        <h3>Past-tense example card</h3>
+        <p class="desc">One-card-per-example grammar teaching: tense title, highlighted verb, English tense marker.</p>
+        <span class="src">urdu-agreement-pair-deck</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/number-card.mp4">
+        <source src="media/number-card.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Number card</span>
+        <h3>Counting / number flashcard</h3>
+        <p class="desc">Digit + Roman Urdu + Urdu-script number card, with per-letter highlight sweep.</p>
+        <span class="src">urdu-vocab-flashcard</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/continents-card.mp4">
+        <source src="media/continents-card.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Vocab card</span>
+        <h3>Topic vocabulary card</h3>
+        <p class="desc">English + Roman + Urdu-script layout for a themed vocabulary topic (e.g. continents).</p>
+        <span class="src">urdu-vocab-flashcard</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/routine-vocab.mp4">
+        <source src="media/routine-vocab.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Daily-routine vocab</span>
+        <h3>Daily routine word card</h3>
+        <p class="desc">A 34-card daily-routine vocabulary set built from the same spec-driven workflow.</p>
+        <span class="src">urdu-daily-routine-vocab</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/routine-phrase.mp4">
+        <source src="media/routine-phrase.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Daily-routine phrases</span>
+        <h3>Phrase with highlight sweep</h3>
+        <p class="desc">A 19-sentence phrases lesson: roman LTR highlight sweep + Amiri RTL overlay-fade highlight.</p>
+        <span class="src">urdu-daily-routine-phrases</span>
+      </div>
+    </div>
+    <div class="card">
+      <video controls preload="metadata" poster="media/tenses-concat.mp4">
+        <source src="media/tenses-concat.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag content">Tense concat video</span>
+        <h3>Combined tenses video</h3>
+        <p class="desc">Multiple tense cards concatenated into one sequence, ready for playback or posting.</p>
+        <span class="src">urdu-tenses-flashcard</span>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="n">03</span>Animated word-by-word audio-highlight</h2>
+  <p style="color:var(--muted);max-width:760px;margin-top:-6px">
+    Drives a spoken sentence: each word turns red as it is read aloud, a
+    cumulative karaoke-highlight effect. Three interchangeable backends.</p>
+  <div class="grid">
+    <div class="card">
+      <video controls preload="metadata" poster="media/tts-highlight.mp4">
+        <source src="media/tts-highlight.mp4" type="video/mp4"></video>
+      <div class="card-body">
+        <span class="tag audio">Spoken-prefix highlight</span>
+        <h3>TTS word-highlight video</h3>
+        <p class="desc">Urdu sentence with TTS audio; the spoken prefix turns red word by word.</p>
+        <span class="src">tts-video-highlight</span>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="n">04</span>Full skill inventory</h2>
+  <div class="grid rows">
+    <div class="row">
+      <div class="name">manim-urdu-rendering<span>infrastructure</span></div>
+      <div class="about">Core Urdu/Arabic quirks in Manim: <em>zero-width shaping threshold</em>, the <em>disable_ligatures</em> bug, Nastaliq width jitter, and their workarounds.</div>
+    </div>
+    <div class="row">
+      <div class="name">manim-video<span>infrastructure</span></div>
+      <div class="about">The base kit: text2svg helper, 39-letter alphabet card, 11 capability demos, 3 prototype templates. Covers Noto Nastaliq, Amiri, Naskh, FreeMono, RTL.</div>
+    </div>
+    <div class="row">
+      <div class="name">manim-urdu-flashcard-shell<span>infrastructure</span></div>
+      <div class="about">Reusable flashcard scene factory: image-left, isolated-letters-on-top, joined-word-with-highlight on the right, translit + English below.</div>
+    </div>
+    <div class="row">
+      <div class="name">manim-urdu-minimal-flashcard<span>infrastructure</span></div>
+      <div class="about">Minimal vocab cards, three deck-type variants (image + isolated letter; + English label; + sequential per-letter walkthrough).</div>
+    </div>
+    <div class="row">
+      <div class="name">manim-urdu-positional-forms<span>infrastructure</span></div>
+      <div class="about">All four positional forms (isolated / initial / medial / final) for all 41 Urdu letters, side by side.</div>
+    </div>
+    <div class="row">
+      <div class="name">manim-urdu-word-highlight<span>infrastructure</span></div>
+      <div class="about">Highlight each letter of an Urdu word in true reading order, rendering the whole word as a single shaped Text so the joins stay correct.</div>
+    </div>
+    <div class="row">
+      <div class="name">isolated-urdu-letter<span>infrastructure</span></div>
+      <div class="about">Workarounds for isolated-letter rendering — wrap-and-extract, and the text2svg + SVGMobject path that produces a truly isolated form.</div>
+    </div>
+    <div class="row">
+      <div class="name">manim-layout-grid<span>infrastructure</span></div>
+      <div class="about">Overlay a measurement grid on a scene to verify element positions in Manim coordinates.</div>
+    </div>
+    <div class="row">
+      <div class="name">urdu-vocab-flashcard<span>generator</span></div>
+      <div class="about">End-to-end vocab video: data TSV → driver from a proven template → Manim render → post-render rename/concat → regression-tested per-letter highlight.</div>
+    </div>
+    <div class="row">
+      <div class="name">urdu-agreement-pair-deck<span>generator</span></div>
+      <div class="about">Verb-tense decks where the agreement pieces (verb suffix + helper verb) light up together as a red pair.</div>
+    </div>
+    <div class="row">
+      <div class="name">urdu-tenses-flashcard<span>generator</span></div>
+      <div class="about">One-card-per-example grammar videos: tense title, roman-Urdu sentence with highlighted verb, English with highlighted tense marker.</div>
+    </div>
+    <div class="row">
+      <div class="name">urdu-daily-routine-vocab<span>generator</span></div>
+      <div class="about">The 34-card daily-routine vocab flashcard video, extensible and regression-tested against a byte-identical anchor.</div>
+    </div>
+    <div class="row">
+      <div class="name">urdu-daily-routine-phrases<span>generator</span></div>
+      <div class="about">The 19-sentence daily-routine phrases lesson with the per-word highlight-sweep pattern.</div>
+    </div>
+    <div class="row">
+      <div class="name">translit-and-urdu-script-dual-highlight<span>generator</span></div>
+      <div class="about">The 24-card possessive deck: rule caption, English, Roman, Urdu sentence with possessor base green / ending red (fused and kaaf forms).</div>
+    </div>
+    <div class="row">
+      <div class="name">tts-video-highlight<span>generator</span></div>
+      <div class="about">Word-by-word spoken-highlight videos with three interchangeable render backends (fatima / m3 / kimi).</div>
+    </div>
+    <div class="row">
+      <div class="name">urdu-dialog<span>generator</span></div>
+      <div class="about">Multi-speaker Urdu dialog deck: each speaker line is one short MP4 card; multiple lines concat into a conversation sequence.</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>How it works:</b> every generator consumes a plain data spec (TSV columns for
+    Urdu text, Roman transliteration, English meaning, and optional highlight
+    tokens) and emits a finished, playable video or card set. Adding a lesson is
+    editing a row — the layout, shaping, highlighting, and encoding are
+    handled by the skill. All clips shown above are real rendered outputs from
+    this project, pulled straight from each skill's examples directory.
+  </div>
+
+  <footer>
+    Manim Urdu Skill Suite · generated from the <code>urdu pi</code> skills store · Manim Community v0.20.1 · All clips are actual skill outputs
+  </footer>
+
+</div>
+</body>
+</html>
