@@ -31,6 +31,69 @@
     height: 100%;
   }
 
+
+  .top-countries-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ddd;
+    border: 1px solid #2a2a2a;
+  }
+  
+  .top-countries-table th, 
+  .top-countries-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #2a2a2a;
+    text-align: left;
+  }
+  
+  .top-countries-table th {
+    background-color: #222;
+    color: #888;
+    font-weight: normal;
+  }
+  
+  .continent-name {
+    font-weight: bold;
+    color: #fc6255;
+  }
+  
+  /* Mobile Layout */
+  @media screen and (max-width: 768px) {
+    .top-countries-table {
+      border: none;
+    }
+    .top-countries-table thead {
+      display: none;
+    }
+    .top-countries-table tr {
+      display: block;
+      margin-bottom: 1.5rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      background: #221a1a;
+      overflow: hidden;
+    }
+    .top-countries-table td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: right;
+    }
+    .top-countries-table td:last-child {
+      border-bottom: none;
+    }
+    .top-countries-table td::before {
+      content: attr(data-label);
+      color: #777;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-right: 1rem;
+      text-align: left;
+    }
+  }
   
 </style>
 </head>
@@ -77,6 +140,85 @@
     
   </figcaption>
 </figure>
+
+
+
+<br><br>
+
+
+  <table class="top-countries-table">
+  <thead>
+    <tr>
+      <th>Continent</th>
+      <th>#1</th>
+      <th>#2</th>
+      <th>#3</th>
+      <th>#4</th>
+      <th>#5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Continent" class="continent-name">Asia</td>
+      <td data-label="#1">India</td>
+      <td data-label="#2">China</td>
+      <td data-label="#3">Indonesia</td>
+      <td data-label="#4">Pakistan</td>
+      <td data-label="#5">Bangladesh</td>
+    </tr>
+    <tr>
+      <td data-label="Continent" class="continent-name">Africa</td>
+      <td data-label="#1">Nigeria</td>
+      <td data-label="#2">DR Congo</td>
+      <td data-label="#3">Ethiopia</td>
+      <td data-label="#4">Egypt</td>
+      <td data-label="#5">Tanzania</td>
+    </tr>
+    <tr>
+      <td data-label="Continent" class="continent-name">Europe</td>
+      <td data-label="#1">Russia</td>
+      <td data-label="#2">Germany</td>
+      <td data-label="#3">United Kingdom</td>
+      <td data-label="#4">France</td>
+      <td data-label="#5">Italy</td>
+    </tr>
+    <tr>
+      <td data-label="Continent" class="continent-name">North America</td>
+      <td data-label="#1">United States</td>
+      <td data-label="#2">Mexico</td>
+      <td data-label="#3">Canada</td>
+      <td data-label="#4">Guatemala</td>
+      <td data-label="#5">Cuba</td>
+    </tr>
+    <tr>
+      <td data-label="Continent" class="continent-name">South America</td>
+      <td data-label="#1">Brazil</td>
+      <td data-label="#2">Colombia</td>
+      <td data-label="#3">Argentina</td>
+      <td data-label="#4">Peru</td>
+      <td data-label="#5">Venezuela</td>
+    </tr>
+    <tr>
+      <td data-label="Continent" class="continent-name">Oceania</td>
+      <td data-label="#1">Australia</td>
+      <td data-label="#2">Papua New Guinea</td>
+      <td data-label="#3">New Zealand</td>
+      <td data-label="#4">Fiji</td>
+      <td data-label="#5">Solomon Islands</td>
+    </tr>
+    <tr>
+      <td data-label="Continent" class="continent-name">Antarctica</td>
+      <td data-label="#1">-</td>
+      <td data-label="#2">-</td>
+      <td data-label="#3">-</td>
+      <td data-label="#4">-</td>
+      <td data-label="#5">-</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  
 
 <br><br><br><br><br>
 
