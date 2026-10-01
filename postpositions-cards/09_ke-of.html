@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>School park ke paas hai. - The school is near the park.</title>
+<style>
+  @font-face{font-family:'UrduEmbedded';src:url('urdu-nastaliq.woff2') format('woff2');font-display:block}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#121212;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;padding:24px 0}
+  .cwrap{width:100%;max-width:1920px;margin:0 auto}
+  section.card{position:relative;width:1920px;height:1080px;overflow:hidden;transform-origin:top left;
+    border-radius:26px;background:linear-gradient(160deg,#101010 0%,#0e0e0e 55%,#1c1c1c 100%);
+    box-shadow:0 18px 60px rgba(0,0,0,.55)}
+  .cbody{position:absolute;left:0;width:100%}
+  .ur{text-align:center;font-family:'UrduEmbedded',serif;line-height:1.45;color:#9aa0a6;
+    direction:rtl;unicode-bidi:isolate}
+  .ur .w{display:inline-block;white-space:pre;line-height:0.72;padding:0 .06em;border-radius:.14em}
+  .ur .w + .w{margin-right:var(--g,6px)}
+  .rm{text-align:center;font-style:italic;color:#c9cfd8;line-height:1.3}
+  .en{text-align:center;color:#c9cfd8;line-height:1.3}
+  .rm span,.en span{padding:0 .06em;border-radius:.14em}
+  .w,.rm span,.en span{cursor:pointer;user-select:none;-webkit-user-select:none}
+  .on{color:#fc6255}
+  .w.on,.rm span.on,.en span.on{background:#1e1e1e}
+  .key{text-align:center;color:#6b6b6b;line-height:2.4}
+  .key .ku{font-family:'UrduEmbedded',serif;color:#9aa0a6;vertical-align:middle;position:relative;
+    top:-0.42em;margin:0 6px;direction:rtl}
+  .no{position:absolute;top:34px;left:44px;color:#6b6b6b;font-size:30px;letter-spacing:.06em;
+    display:flex;align-items:center;gap:14px;z-index:10}
+  .no a.nav{display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;background:#fc6255;
+    text-decoration:none;cursor:pointer;transition:background .15s}
+  .no a.nav:hover{background:#e54e3f}
+  .no a.nav svg{width:22px;height:22px;fill:#1e1e1e}
+  a.home{position:absolute;z-index:10;display:flex;align-items:center;justify-content:center;
+    width:96px;height:96px;border-radius:50%;background:#191919;border:2px solid #2c2c2c;
+    text-decoration:none;transition:background .15s,border-color .15s}
+  a.home:hover{background:#252525;border-color:#404040}
+  a.home svg{width:46px;height:46px;fill:none;stroke:#9aa0a6;stroke-width:9;
+    stroke-linecap:round;stroke-linejoin:round}
+  a.play{position:absolute;z-index:10;display:flex;align-items:center;justify-content:center;
+    width:96px;height:96px;border-radius:50%;background:#191919;border:2px solid #2c2c2c;
+    cursor:pointer;transition:background .15s,border-color .15s}
+  a.play:hover{background:#252525;border-color:#404040}
+  a.play svg{width:38px;height:38px;fill:#9aa0a6}
+  a.play .p2{display:none}
+  a.play.run .p1{display:none}
+  a.play.run .p2{display:block}
+  a.play.run{border-color:#fc6255}
+  #bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:#fc6255;opacity:.7;z-index:11;
+    transition:width .2s linear}
+  body.shot a.home,body.shot a.play,body.shot a.nav,body.shot #bar{display:none}
+</style>
+</head>
+<body>
+<div class="cwrap">
+  <section class="card" data-file="09_ke-of.html" data-prev="08_ke-of.html" data-next="10_ke-of.html">
+    <div class="no"><a class="nav back" href="08_ke-of.html" title="previous card (p)" aria-label="previous card"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M72 16 L26 50 L72 84 Z"/></svg></a><span class="num">09</span><a class="nav fwd" href="10_ke-of.html" title="next card (n)" aria-label="next card"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M28 16 L74 50 L28 84 Z"/></svg></a></div>
+    <div class="cbody">
+      <div class="ur"><span class="w" data-i="0" data-roman="School" data-en="the school">سکول</span><span class="w" data-i="1" data-roman="park" data-en="the park">پارک</span><span class="w" data-i="2" data-roman="ke" data-en="of">کے</span><span class="w" data-i="3" data-roman="paas" data-en="near">پاس</span><span class="w" data-i="4" data-roman="hai" data-en="is">ہے۔</span></div>
+      <div class="rm"><span data-i="0">School</span> <span data-i="1">park</span> <span data-i="2">ke</span> <span data-i="3">paas</span> <span data-i="4">hai.</span></div>
+      <div class="en"><span data-i="0">The</span> <span data-i="0">school</span> <span data-i="4">is</span> <span data-i="3">near</span> <span data-i="1">the</span> <span data-i="1">park</span>.</div>
+      
+    </div>
+    <a class="home" href="index.html" title="all cards" aria-label="all cards"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M14 48 L50 17 L86 48"/><path d="M26 44 V84 H74 V44"/></svg></a>
+    <a class="play" href="#" title="play the show - space pauses, Esc stops" aria-label="play"><svg class="p1" viewBox="0 0 100 100" aria-hidden="true"><path d="M28 16 L84 50 L28 84 Z"/></svg><svg class="p2" viewBox="0 0 100 100" aria-hidden="true"><path d="M28 18 H44 V82 H28 Z"/><path d="M56 18 H72 V82 H56 Z"/></svg></a>
+    <div id="bar"></div>
+  </section>
+</div>
+<script>
+(function(){
+  var W = 1920, H = 1080, PADX = 96, FILL = 0.92, CAP = 200, FLOOR = 60, GS = 0.26, BTN = 96;
+  var SHOWLEAD = 1.2, SHOWHOLD = 1.4, SHOWCARD = 1.6;   // the show's clock
+  // GS: chip gap as a fraction of the urdu size - the house ratio, 18.3 px at urdu 70.55
+  if ((location.hash || '').indexOf('shot') >= 0) document.body.classList.add('shot');
+  function fit(){
+    document.querySelectorAll('.cwrap').forEach(function(w){
+      var st = w.querySelector('section.card');
+      var ur = st.querySelector('.ur'), rm = st.querySelector('.rm'),
+          en = st.querySelector('.en'), key = st.querySelector('.key'), b = st.querySelector('.cbody'),
+          btn = st.querySelector('a.home'), pl = st.querySelector('a.play');
+      // 1. urdu one-em-per-line: how wide is the sentence at 100 px?
+      ur.style.fontSize = '100px'; rm.style.fontSize = '0px'; en.style.fontSize = '0px';
+      var loose = 0;
+      ur.querySelectorAll('.w').forEach(function(s){ loose += s.getBoundingClientRect().width; });
+      loose += (ur.querySelectorAll('.w').length - 1) * 100 * GS;
+      var s = Math.max(FLOOR, Math.min(CAP, 100 * (W - 2 * PADX) * FILL / Math.max(loose, 1)));
+      // 2. sizes
+      ur.style.fontSize = s.toFixed(1) + 'px';
+      ur.style.setProperty('--g', (s * GS).toFixed(1) + 'px');
+      var r = Math.round(s * 0.50), e = Math.round(s * 0.50), k = Math.max(22, Math.round(s * 0.20));
+      rm.style.fontSize = r + 'px'; en.style.fontSize = e + 'px';
+      if (key) {
+        key.style.fontSize = k + 'px';
+        key.querySelectorAll('.ku').forEach(function(x){ x.style.fontSize = Math.round(s * 0.30) + 'px'; });
+      }
+      // 3. gaps scale with the urdu size
+      ur.style.marginBottom = (s * 0.55).toFixed(1) + 'px';
+      rm.style.marginBottom = (s * 0.45).toFixed(1) + 'px';
+      // 4. centre the block in the stage
+      b.style.top = Math.max(24, (H - b.offsetHeight) / 2).toFixed(1) + 'px';
+      // 5. scale the card to the window
+      var sc = w.clientWidth / W;
+      st.style.transform = 'scale(' + sc + ')';
+      w.style.height = (H * sc) + 'px';
+      var metrics = {urdu_px: +s.toFixed(1), loose_at_100: Math.round(loose),
+        row_px: Math.round(loose * s / 100), block_h: b.offsetHeight,
+        block_top: Math.round(parseFloat(b.style.top)),
+        rm_px: r, en_px: e, key_px: k,
+        stage_bottom: Math.round(parseFloat(b.style.top) + b.offsetHeight)};
+      // 6. home button: half way from the card's left edge to the english sentence's first
+      //    letter, vertically centred on the english line.
+      if (btn || pl) {
+        var cr = st.getBoundingClientRect();
+        var rg = document.createRange(); rg.selectNodeContents(en);
+        var er = rg.getBoundingClientRect();   // the english TEXT's box, not its full-width block
+        var en_left = (er.left - cr.left) / sc;
+        var en_cy = ((er.top - cr.top) / sc) + (er.height / sc) / 2;
+        var bl = Math.max(16, en_left / 2 - BTN / 2), bt = en_cy - BTN / 2;
+        if (btn) { btn.style.left = bl.toFixed(1) + 'px'; btn.style.top = bt.toFixed(1) + 'px'; }
+        if (pl) { pl.style.left = (W - bl - BTN).toFixed(1) + 'px'; pl.style.top = bt.toFixed(1) + 'px'; }
+        metrics.en_left = Math.round(en_left);
+        metrics.home_left = Math.round(bl);
+        metrics.home_top = Math.round(bt);
+        metrics.play_left = Math.round(W - bl - BTN);
+      }
+      st.setAttribute('data-metrics', JSON.stringify(metrics));
+    });
+  }
+  fit();
+  window.addEventListener('load', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('resize', fit);
+
+  // ---- word by word highlighting, driven by the tuple groups --------------------------------
+  var pinned = null, hovered = null, groups = 0;
+  document.querySelectorAll('[data-i]').forEach(function(el){
+    if (el.dataset.i !== '') groups = Math.max(groups, +el.dataset.i + 1);
+  });
+  function paint(){
+    var cur = pinned !== null ? pinned : hovered;
+    document.querySelectorAll('[data-i]').forEach(function(el){
+      el.classList.toggle('on', cur !== null && el.dataset.i !== '' && +el.dataset.i === cur);
+    });
+  }
+  function inCard(target){
+    var el = target && target.closest ? target.closest('[data-i]') : null;
+    return (el && el.dataset.i !== '') ? el : null;
+  }
+  document.addEventListener('mouseover', function(ev){
+    if (pinned !== null) return;
+    var el = inCard(ev.target);
+    if (el && +el.dataset.i !== hovered) { hovered = +el.dataset.i; paint(); }
+  });
+  document.addEventListener('mouseout', function(ev){
+    if (pinned !== null) return;
+    if (!inCard(ev.target)) return;
+    if (!inCard(ev.relatedTarget)) { hovered = null; paint(); }
+  });
+  document.addEventListener('click', function(ev){
+    var el = inCard(ev.target);
+    if (!el) return;
+    pinned = (+el.dataset.i === pinned) ? null : +el.dataset.i;
+    paint();
+  });
+  document.addEventListener('keydown', function(ev){
+    if (!groups) return;
+    if (ev.key === 'ArrowRight') { stopShow(); pinned = pinned === null ? 0 : Math.min(groups - 1, pinned + 1); paint(); ev.preventDefault(); }
+    else if (ev.key === 'ArrowLeft') { stopShow(); pinned = pinned === null ? 0 : Math.max(0, pinned - 1); paint(); ev.preventDefault(); }
+    else if (ev.key === 'Escape') { stopShow(); pinned = null; hovered = null; paint(); }
+    else if (ev.key === ' ') { ev.preventDefault(); if (playing) stopShow(); else startShow(cur); }
+    else if (ev.key === 'n' || ev.key === 'N') { if (nextF) location.href = nextF; }
+    else if (ev.key === 'p' || ev.key === 'P') { if (prevF) location.href = prevF; }
+  });
+
+  // ---- THE SHOW: press play and the groups light one by one, then it moves to the next card ---
+  // Nothing here needs a server: the card carries the names of its neighbours, and ?play=1 tells
+  // the next page to carry on, so a whole topic can play as one continuous show from the index.
+  var st0 = document.querySelector('section.card');
+  var nextF = st0.getAttribute('data-next') || '', prevF = st0.getAttribute('data-prev') || '';
+  var bar = document.getElementById('bar');
+  var cur = 0, playing = false, ptimer = null;
+  function glyph(on){ document.querySelectorAll('a.play').forEach(function(b){ b.classList.toggle('run', on); }); }
+  function endShow(full){
+    playing = false;
+    if (ptimer) { clearTimeout(ptimer); ptimer = null; }
+    glyph(false);
+    if (bar) bar.style.width = full ? '100%' : '0';
+  }
+  function stopShow(){ endShow(false); }
+  function light(g){
+    cur = g; pinned = g; paint();
+    if (bar) bar.style.width = ((g + 1) / Math.max(groups, 1) * 100).toFixed(1) + '%';
+  }
+  function step(){
+    if (cur + 1 >= groups) {                        // the card is finished
+      if (nextF) { ptimer = setTimeout(function(){ location.href = nextF + '?play=1'; }, SHOWCARD * 1000); return; }
+      endShow(true); return;                        // last card: stop with the last group lit
+    }
+    light(cur + 1);
+    ptimer = setTimeout(step, SHOWHOLD * 1000);
+  }
+  function startShow(from){
+    if (!groups) return;
+    stopShow();
+    playing = true; glyph(true); hovered = null;
+    if (from) { light(from); ptimer = setTimeout(step, SHOWHOLD * 1000); }
+    else {
+      cur = 0; pinned = null; paint();
+      ptimer = setTimeout(function(){
+        light(0);
+        ptimer = setTimeout(step, SHOWHOLD * 1000);
+      }, SHOWLEAD * 1000);
+    }
+  }
+  document.querySelectorAll('a.play').forEach(function(b){
+    b.addEventListener('click', function(ev){
+      ev.preventDefault();
+      if (playing) stopShow(); else startShow(0);
+    });
+  });
+  if (groups && (location.search || '').indexOf('play=1') >= 0) startShow(0);
+})();
+</script>
+</body>
+</html>
